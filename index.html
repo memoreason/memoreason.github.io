@@ -33,7 +33,7 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&amp;family=Source+Sans+3:wght@400..800&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/memoreason/minimal.css?v=20260928-3" />
+    <link rel="stylesheet" href="assets/memoreason/minimal.css?v=20260928-4" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -96,7 +96,7 @@
       </section>
 
       <section class="leaderboard-section section-rule" id="leaderboard" aria-labelledby="leaderboard-title">
-        <div class="page-shell">
+        <div class="page-shell leaderboard-shell">
           <div class="section-intro leaderboard-intro">
             <div>
               <p class="section-label">Model report card</p>
@@ -106,30 +106,6 @@
               Ranked by accuracy on fully fictitious documents. Higher is better; robustness metrics should be read jointly.
             </p>
           </div>
-
-          <ol class="podium-list" aria-label="Top three models by fully fictitious accuracy">
-            <li>
-              <span class="podium-rank"><span aria-hidden="true">🥇</span><span class="sr-only">Rank 1</span></span>
-              <span class="podium-model"><span>Claude Sonnet 4.6</span><img class="model-logo" src="assets/memoreason/model-logos/anthropic.png" width="160" height="160" alt="" aria-hidden="true" /></span>
-              <span class="score-track" aria-hidden="true"><i style="--score: 92.3%"></i></span>
-              <strong>92.30%</strong>
-              <small>3.37 pp gap</small>
-            </li>
-            <li>
-              <span class="podium-rank"><span aria-hidden="true">🥈</span><span class="sr-only">Rank 2</span></span>
-              <span class="podium-model"><span>GPT-OSS 120B</span><img class="model-logo" src="assets/memoreason/model-logos/openai.png" width="160" height="160" alt="" aria-hidden="true" /></span>
-              <span class="score-track" aria-hidden="true"><i style="--score: 90.28%"></i></span>
-              <strong>90.28%</strong>
-              <small>3.38 pp gap</small>
-            </li>
-            <li>
-              <span class="podium-rank"><span aria-hidden="true">🥉</span><span class="sr-only">Rank 3</span></span>
-              <span class="podium-model"><span>Qwen3.5 27B</span><img class="model-logo" src="assets/memoreason/model-logos/qwen.png" width="160" height="160" alt="" aria-hidden="true" /></span>
-              <span class="score-track" aria-hidden="true"><i style="--score: 88.8%"></i></span>
-              <strong>88.80%</strong>
-              <small>2.95 pp gap</small>
-            </li>
-          </ol>
 
           <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable MemoReason leaderboard">
             <table class="leaderboard-table">

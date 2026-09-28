@@ -345,6 +345,10 @@ select {
   padding: 76px 0 86px;
 }
 
+.leaderboard-shell {
+  width: min(1280px, calc(100vw - 48px));
+}
+
 .section-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
@@ -447,9 +451,9 @@ select {
 }
 
 .table-scroll {
-  margin-top: 42px;
+  margin-top: 48px;
   overflow-x: auto;
-  border-top: 1px solid var(--line-strong);
+  border-top: 2px solid var(--ink);
   border-bottom: 1px solid var(--line-strong);
 }
 
@@ -460,9 +464,9 @@ select {
 
 .leaderboard-table {
   width: 100%;
-  min-width: 920px;
+  min-width: 1100px;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -477,7 +481,7 @@ select {
 
 .leaderboard-table th,
 .leaderboard-table td {
-  padding: 13px 12px;
+  padding: 17px 16px;
   border-bottom: 1px solid var(--line);
   text-align: right;
   white-space: nowrap;
@@ -486,7 +490,7 @@ select {
 .leaderboard-table thead th {
   color: var(--muted);
   background: #fafafa;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.035em;
   text-transform: uppercase;
@@ -500,8 +504,9 @@ select {
 }
 
 .leaderboard-table tbody th {
+  min-width: 245px;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 650;
 }
 
@@ -512,11 +517,11 @@ select {
 }
 
 .leaderboard-table .model-label > .model-logo {
-  width: 16px;
-  max-width: 16px;
-  height: 16px;
-  max-height: 16px;
-  flex-basis: 16px;
+  width: 18px;
+  max-width: 18px;
+  height: 18px;
+  max-height: 18px;
+  flex-basis: 18px;
   border-radius: 4px;
 }
 
@@ -547,8 +552,9 @@ select {
 }
 
 .rank-cell {
-  width: 62px;
+  width: 72px;
   color: var(--muted);
+  font-size: 14px;
 }
 
 .leaderboard-note {
@@ -3661,6 +3667,10 @@ select {
 
   .leaderboard-section {
     padding: 58px 0 64px;
+  }
+
+  .leaderboard-shell {
+    width: var(--page);
   }
 
   .section-intro {
