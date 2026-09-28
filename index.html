@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fbf9f3" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="MemoReason is a controlled benchmark showing how parametric memory changes contextual reasoning in large language models."
+    />
+    <link rel="canonical" href="https://memoreason.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MemoReason — Memorization in Reasoning" />
+    <meta
+      property="og:description"
+      content="A controlled benchmark showing how parametric memory changes contextual reasoning in large language models."
+    />
+    <meta property="og:url" content="https://memoreason.github.io/" />
+    <meta property="og:image" content="https://memoreason.github.io/assets/memoreason/og-memoreason.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MemoReason — Memorization in Reasoning" />
+    <meta
+      name="twitter:description"
+      content="A controlled benchmark showing how parametric memory changes contextual reasoning in large language models."
+    />
+    <meta name="twitter:image" content="https://memoreason.github.io/assets/memoreason/og-memoreason.png" />
+    <title>MemoReason — Memorization in Reasoning</title>
+    <link rel="icon" type="image/png" href="assets/memoreason/twemoji-brain.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&amp;family=Source+Sans+3:wght@400..800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/memoreason/minimal.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="wordmark" href="#top" aria-label="MemoReason home">
+          MemoReason<img
+            class="wordmark-brain"
+            src="assets/memoreason/twemoji-brain.png"
+            width="450"
+            height="450"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+        <nav aria-label="Project navigation">
+          <a href="#leaderboard">Leaderboard</a>
+          <a href="#demo">Example</a>
+          <a href="#results">Results</a>
+          <a href="#statistics">Dataset</a>
+          <a href="#paper">Paper</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero page-shell" id="top" aria-labelledby="hero-title">
+        <h1 id="hero-title">
+          MemoReason<img
+            class="hero-brain"
+            src="assets/memoreason/twemoji-brain.png"
+            width="450"
+            height="450"
+            alt=""
+            aria-hidden="true"
+          />
+        </h1>
+        <p class="hero-name-expansion">(<strong>Memo</strong>rization in <strong>Reason</strong>ing)</p>
+        <p class="paper-title">
+          Evaluating the Effect of Parametric Memory on Contextual Reasoning in LLMs
+        </p>
+        <p class="hero-deck">
+          Keep the task and logic fixed. Change only whether the entities are familiar. Measure what happens to reasoning.
+        </p>
+
+        <div class="authors" aria-label="Authors">
+          <a href="https://zineddine-tighidet.github.io/">Zineddine Tighidet<sup>1,2</sup></a>
+          <a href="https://scholar.google.com/citations?view_op=search_authors&amp;mauthors=Andrea+Mogini&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Andrea Mogini on Google Scholar">Andrea Mogini<sup>1</sup></a>
+          <a href="https://scholar.google.com/citations?view_op=search_authors&amp;mauthors=Jiali+Mei&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Jiali Mei on Google Scholar">Jiali Mei<sup>1</sup></a>
+          <a href="https://pages.isir.upmc.fr/gallinari/">Patrick Gallinari<sup>2,3</sup></a>
+          <a href="https://www.piwowarski.fr/">Benjamin Piwowarski<sup>2</sup></a>
+        </div>
+        <p class="affiliations">
+          <span><sup>1</sup> BNP Paribas</span>
+          <span><sup>2</sup> Sorbonne Université</span>
+          <span><sup>3</sup> Criteo AI Lab</span>
+        </p>
+
+      </section>
+
+      <section class="leaderboard-section section-rule" id="leaderboard" aria-labelledby="leaderboard-title">
+        <div class="page-shell">
+          <div class="section-intro leaderboard-intro">
+            <div>
+              <p class="section-label">Model report card</p>
+              <h2 id="leaderboard-title"><span aria-hidden="true">🏆</span> MemoReason leaderboard</h2>
+            </div>
+            <p>
+              Ranked by accuracy on fully fictitious documents. Higher is better; robustness metrics should be read jointly.
+            </p>
+          </div>
+
+          <ol class="podium-list" aria-label="Top three models by fully fictitious accuracy">
+            <li>
+              <span class="podium-rank"><span aria-hidden="true">🥇</span><span class="sr-only">Rank 1</span></span>
+              <span class="podium-model">Claude Sonnet 4.6</span>
+              <span class="score-track" aria-hidden="true"><i style="--score: 92.3%"></i></span>
+              <strong>92.30%</strong>
+              <small>3.37 pp gap</small>
+            </li>
+            <li>
+              <span class="podium-rank"><span aria-hidden="true">🥈</span><span class="sr-only">Rank 2</span></span>
+              <span class="podium-model">GPT-OSS 120B</span>
+              <span class="score-track" aria-hidden="true"><i style="--score: 90.28%"></i></span>
+              <strong>90.28%</strong>
+              <small>3.38 pp gap</small>
+            </li>
+            <li>
+              <span class="podium-rank"><span aria-hidden="true">🥉</span><span class="sr-only">Rank 3</span></span>
+              <span class="podium-model">Qwen3.5 27B</span>
+              <span class="score-track" aria-hidden="true"><i style="--score: 88.8%"></i></span>
+              <strong>88.80%</strong>
+              <small>2.95 pp gap</small>
+            </li>
+          </ol>
+
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable MemoReason leaderboard">
+            <table class="leaderboard-table">
+              <caption>
+                Nine-model MemoReason report card. Official rank uses fully fictitious accuracy; metric columns are sortable.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span class="static-heading">Rank</span></th>
+                  <th scope="col" data-sort-header="model" aria-sort="none">
+                    <button type="button" data-sort="model">Model <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="accuracy" aria-sort="descending">
+                    <button type="button" data-sort="accuracy">Fictitious accuracy <span aria-hidden="true">↓</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="gap" aria-sort="none">
+                    <button type="button" data-sort="gap">Factual–fictitious gap <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="ratio" aria-sort="none">
+                    <button type="button" data-sort="ratio">Error ratio <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="shortcut" aria-sort="none">
+                    <button type="button" data-sort="shortcut">Direct-recall shortcut <span aria-hidden="true">↕</span></button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-model="Claude Sonnet 4.6" data-accuracy="92.30" data-gap="3.37" data-ratio="1.78" data-shortcut="2.01">
+                  <td class="rank-cell"><span aria-hidden="true">🥇</span><span class="sr-only">Rank </span>1</td><th scope="row">Claude Sonnet 4.6</th><td>92.30%</td><td>3.37 pp</td><td>1.78×</td><td>2.01%</td>
+                </tr>
+                <tr data-model="GPT-OSS 120B" data-accuracy="90.28" data-gap="3.38" data-ratio="1.53" data-shortcut="1.33">
+                  <td class="rank-cell"><span aria-hidden="true">🥈</span><span class="sr-only">Rank </span>2</td><th scope="row">GPT-OSS 120B</th><td>90.28%</td><td>3.38 pp</td><td>1.53×</td><td>1.33%</td>
+                </tr>
+                <tr data-model="Qwen3.5 27B" data-accuracy="88.80" data-gap="2.95" data-ratio="1.36" data-shortcut="1.18">
+                  <td class="rank-cell"><span aria-hidden="true">🥉</span><span class="sr-only">Rank </span>3</td><th scope="row">Qwen3.5 27B</th><td>88.80%</td><td>2.95 pp</td><td>1.36×</td><td>1.18%</td>
+                </tr>
+                <tr data-model="GPT-OSS 20B" data-accuracy="87.65" data-gap="3.10" data-ratio="1.34" data-shortcut="2.18">
+                  <td class="rank-cell">04</td><th scope="row">GPT-OSS 20B</th><td>87.65%</td><td>3.10 pp</td><td>1.34×</td><td>2.18%</td>
+                </tr>
+                <tr data-model="Qwen3.5 35B-A3B" data-accuracy="86.34" data-gap="2.74" data-ratio="1.25" data-shortcut="2.33">
+                  <td class="rank-cell">05</td><th scope="row">Qwen3.5 35B-A3B</th><td>86.34%</td><td>2.74 pp</td><td>1.25×</td><td>2.33%</td>
+                </tr>
+                <tr data-model="Gemma-4 26B-A4B-it" data-accuracy="85.91" data-gap="1.34" data-ratio="1.11" data-shortcut="1.10">
+                  <td class="rank-cell">06</td><th scope="row">Gemma-4 26B-A4B-it</th><td>85.91%</td><td>1.34 pp</td><td>1.11×</td><td>1.10%</td>
+                </tr>
+                <tr data-model="Llama-3.1 8B-Instruct" data-accuracy="76.88" data-gap="1.37" data-ratio="1.06" data-shortcut="3.19">
+                  <td class="rank-cell">07</td><th scope="row">Llama-3.1 8B-Instruct</th><td>76.88%</td><td>1.37 pp</td><td>1.06×</td><td>3.19%</td>
+                </tr>
+                <tr data-model="OLMo-3 7B-Think" data-accuracy="75.61" data-gap="5.31" data-ratio="1.28" data-shortcut="0.98">
+                  <td class="rank-cell">08</td><th scope="row">OLMo-3 7B-Think</th><td>75.61%</td><td>5.31 pp</td><td>1.28×</td><td>0.98%</td>
+                </tr>
+                <tr data-model="OLMo-3 7B-Instruct" data-accuracy="66.42" data-gap="2.83" data-ratio="1.09" data-shortcut="2.53">
+                  <td class="rank-cell">09</td><th scope="row">OLMo-3 7B-Instruct</th><td>66.42%</td><td>2.83 pp</td><td>1.09×</td><td>2.53%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="leaderboard-note">
+            <p><strong>Ranking metric:</strong> overall accuracy after full entity replacement.</p>
+            <p>A smaller gap is not necessarily better when absolute accuracy is low.</p>
+            <p>Shortcut rate uses failed fictitious variant-answer reasoning items as its denominator.</p>
+            <p>Ranks are point estimates; adjacent differences are not claimed to be statistically significant.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section section-rule memo-demo" id="demo" aria-labelledby="demo-title" data-memo-demo>
+        <div class="page-shell">
+          <div class="section-intro">
+            <div>
+              <p class="section-label">Interactive benchmark example</p>
+              <h2 id="demo-title">One document. The same reasoning. A different world.</h2>
+            </div>
+            <p>
+              Choose a world, then follow one pair of values from the document to the preserved constraints and finally
+              to the recomputed answer.
+            </p>
+          </div>
+
+          <div class="demo-toolbar">
+            <div class="world-toggle" role="group" aria-label="Choose the displayed benchmark world">
+              <button class="is-active" type="button" data-demo-mode="factual" aria-pressed="true">Factual</button>
+              <button type="button" data-demo-mode="fictitious" aria-pressed="false">Fictitious</button>
+            </div>
+            <p class="demo-mode-status" aria-live="polite">Showing the factual source.</p>
+            <button class="animation-toggle" type="button" data-demo-pause aria-pressed="false">
+              Pause walkthrough
+            </button>
+          </div>
+
+          <ol class="demo-steps" aria-label="How a MemoReason example is constructed">
+            <li>
+              <button type="button" data-demo-step="0" aria-current="step">
+                <span>01</span>
+                <strong>Compare the document</strong>
+                <small>Same slots, different values</small>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-demo-step="1">
+                <span>02</span>
+                <strong>Preserve the rules</strong>
+                <small>The relationships remain valid</small>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-demo-step="2">
+                <span>03</span>
+                <strong>Recompute the answer</strong>
+                <small>The same question is evaluated again</small>
+              </button>
+            </li>
+          </ol>
+
+          <p class="demo-step-status" role="status" aria-live="polite" aria-atomic="true">
+            <strong data-demo-step-title>Step 1 of 3 · Compare the document.</strong>
+            <span data-demo-step-copy>The factual share values are 53.5% and 46.5%.</span>
+          </p>
+
+          <div class="demo-workspace">
+            <article class="demo-panel document-panel is-step-active" data-demo-panel="document">
+              <header><span>01</span><h3>Document</h3><small>What the model reads</small></header>
+              <p class="panel-purpose">Typed names, places, dates, and numbers occupy the same slots in both worlds.</p>
+              <p class="document-excerpt">
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_1" data-ref="entreprise_org_1.name" data-factual="AstraZeneca plc (AZ)" data-fictitious="Bryntheca Holdings plc (BH)">AstraZeneca plc (AZ)</span>
+                is a
+                <span class="entity-token type-place" tabindex="0" data-entity-id="place_1" data-ref="place_1.demonym" data-factual="Swedish" data-fictitious="Sorpelundic">Swedish</span>-<span class="entity-token type-place" tabindex="0" data-entity-id="place_2" data-ref="place_2.demonym" data-factual="British" data-fictitious="Pelmaraki">British</span>
+                multinational pharmaceutical and biotechnology company with a portfolio of products in oncology,
+                cardiovascular, gastrointestinal, infection, neuroscience, respiratory, and inflammation. The company
+                was founded in
+                <span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_1" data-ref="temporal_1.year" data-factual="1999" data-fictitious="1992">1999</span>
+                through the merger of
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_2" data-ref="entreprise_org_2.name" data-factual="Astra AB" data-fictitious="Pellunix AB">Astra AB</span>
+                and
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_3" data-ref="entreprise_org_3.name" data-factual="Zeneca Group" data-fictitious="Queldara Group">Zeneca Group</span>
+                (itself formed … in
+                <span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_2" data-ref="temporal_2.year" data-factual="1993" data-fictitious="1976">1993</span>).
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_3" data-ref="entreprise_org_3.name" data-factual="Zeneca" data-fictitious="Queldara">Zeneca</span>
+                shareholders received
+                <span class="entity-token type-number" tabindex="0" data-entity-id="number_1" data-ref="number_1.percent" data-factual="53.5%" data-fictitious="61%">53.5%</span>
+                of the shares, while
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_2" data-ref="entreprise_org_2.name" data-factual="Astra" data-fictitious="Pellunix">Astra</span>
+                shareholders received the remaining
+                <span class="entity-token type-number" tabindex="0" data-entity-id="number_2" data-ref="number_2.percent" data-factual="46.5%" data-fictitious="39%">46.5%</span>.
+                … it has made numerous corporate acquisitions, including
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_6" data-ref="entreprise_org_6.name" data-factual="MedImmune" data-fictitious="Quivaren Group">MedImmune</span>
+                (in
+                <span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_4" data-ref="temporal_4.year" data-factual="2007" data-fictitious="2022">2007</span>)
+                and
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_8" data-ref="entreprise_org_8.name" data-factual="Definiens" data-fictitious="Morvagen Group">Definiens</span>
+                (by
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_6" data-ref="entreprise_org_6.name" data-factual="MedImmune" data-fictitious="Quivaren">MedImmune</span>
+                in
+                <span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_6" data-ref="temporal_6.year" data-factual="2014" data-fictitious="2024">2014</span>).
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_1" data-ref="entreprise_org_1.name" data-factual="AstraZeneca" data-fictitious="Bryntheca">AstraZeneca</span>
+                traces its earliest corporate history to
+                <span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_7" data-ref="temporal_7.year" data-factual="1913" data-fictitious="1850">1913</span>.
+                Throughout the
+                <span class="entity-token type-number" tabindex="0" data-entity-id="number_5" data-ref="number_5.str" data-factual="twentieth" data-fictitious="nineteenth">twentieth</span>
+                century, it grew into the largest pharmaceutical company in
+                <span class="entity-token type-place" tabindex="0" data-entity-id="place_1" data-ref="place_1.country" data-factual="Sweden" data-fictitious="Sorpelund">Sweden</span>.
+                …
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_2" data-ref="entreprise_org_2.name" data-factual="Astra AB" data-fictitious="Pellunix AB">Astra AB</span>
+                and
+                <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_3" data-ref="entreprise_org_3.name" data-factual="Zeneca PLC" data-fictitious="Queldara Group">Zeneca PLC</span>
+                merged
+                <span class="entity-token type-number" tabindex="0" data-entity-id="number_4" data-ref="number_4.str" data-factual="six" data-fictitious="sixteen">six</span>
+                years later.
+              </p>
+              <div class="entity-key" aria-label="Entity color legend">
+                <span><i class="type-org"></i> Organization</span>
+                <span><i class="type-place"></i> Place</span>
+                <span><i class="type-number"></i> Number</span>
+                <span><i class="type-temporal"></i> Time</span>
+              </div>
+            </article>
+
+            <article class="demo-panel rules-panel" data-demo-panel="rules">
+              <header><span>02</span><h3>Rules</h3><small>What must stay true</small></header>
+              <p class="panel-purpose">Replacement values are chosen so the original relationships still hold.</p>
+              <div class="rule-list">
+                <div class="rule-row">
+                  <code>
+                    <span class="entity-token type-number" tabindex="0" data-entity-id="number_1" data-ref="number_1.percent" data-factual="53.5" data-fictitious="61">53.5</span>
+                    +
+                    <span class="entity-token type-number" tabindex="0" data-entity-id="number_2" data-ref="number_2.percent" data-factual="46.5" data-fictitious="39">46.5</span>
+                    = 100
+                  </code>
+                  <span class="rule-check" aria-label="Constraint satisfied">✓</span>
+                  <small>share split = 100%</small>
+                </div>
+                <div class="rule-row">
+                  <code>
+                    <span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_1" data-ref="temporal_1.year" data-factual="1999" data-fictitious="1992">1999</span>
+                    −
+                    <span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_2" data-ref="temporal_2.year" data-factual="1993" data-fictitious="1976">1993</span>
+                    =
+                    <span class="entity-token type-number" tabindex="0" data-entity-id="number_4" data-ref="number_4.str" data-factual="6" data-fictitious="16">6</span>
+                  </code>
+                  <span class="rule-check" aria-label="Constraint satisfied">✓</span>
+                  <small>merger − formation = stated lag</small>
+                </div>
+                <div class="rule-row">
+                  <code>
+                    century(<span class="entity-token type-temporal" tabindex="0" data-entity-id="temporal_7" data-ref="temporal_7.year" data-factual="1913" data-fictitious="1850">1913</span>)
+                    =
+                    <span class="entity-token type-number" tabindex="0" data-entity-id="number_5" data-ref="number_5.str" data-factual="20th" data-fictitious="19th">20th</span>
+                  </code>
+                  <span class="rule-check" aria-label="Constraint satisfied">✓</span>
+                  <small>founding year = stated century</small>
+                </div>
+              </div>
+            </article>
+
+            <article class="demo-panel questions-panel" data-demo-panel="questions">
+              <header><span>03</span><h3>Questions</h3><small>What is re-evaluated</small></header>
+              <p class="panel-purpose">The prompts stay fixed; answers that depend on replacements are recomputed.</p>
+              <div class="question-list">
+                <div class="question-row">
+                  <span class="question-kind">Arithmetic · Variant</span>
+                  <p>
+                    By how many percentage points did
+                    <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_3" data-ref="entreprise_org_3.name" data-factual="Zeneca" data-fictitious="Queldara">Zeneca</span>
+                    shareholders’ share exceed
+                    <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_2" data-ref="entreprise_org_2.name" data-factual="Astra" data-fictitious="Pellunix">Astra</span>
+                    shareholders’ share?
+                  </p>
+                  <strong class="question-answer">
+                    <span class="answer-label">Answer</span>
+                    <span class="entity-token answer-token type-number" tabindex="0" data-entity-id="derived_share_gap" data-ref="number_1.percent − number_2.percent" data-factual="53.5 − 46.5 = 7 pp" data-fictitious="61 − 39 = 22 pp">53.5 − 46.5 = 7 pp</span>
+                  </strong>
+                </div>
+                <div class="question-row">
+                  <span class="question-kind">Inference · Variant</span>
+                  <p>
+                    Which acquired company was itself responsible for acquiring
+                    <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_8" data-ref="entreprise_org_8.name" data-factual="Definiens" data-fictitious="Morvagen">Definiens</span>?
+                  </p>
+                  <strong class="question-answer">
+                    <span class="answer-label">Answer</span>
+                    <span class="entity-token answer-token type-org" tabindex="0" data-entity-id="entreprise_org_6" data-ref="entreprise_org_6.name" data-factual="MedImmune" data-fictitious="Quivaren">MedImmune</span>
+                  </strong>
+                </div>
+                <div class="question-row compact-question">
+                  <span class="question-kind">Extractive · Invariant</span>
+                  <p>Which therapeutic area is listed besides oncology, cardiovascular, gastrointestinal, infection, neuroscience, and respiratory?</p>
+                  <strong class="question-answer"><span class="answer-label">Answer</span><span>inflammation</span></strong>
+                </div>
+                <div class="question-row compact-question">
+                  <span class="question-kind">Extractive · Refusal</span>
+                  <p>
+                    Who is the current CEO of
+                    <span class="entity-token type-org" tabindex="0" data-entity-id="entreprise_org_1" data-ref="entreprise_org_1.name" data-factual="AstraZeneca" data-fictitious="Bryntheca">AstraZeneca</span>?
+                  </p>
+                  <strong class="question-answer"><span class="answer-label">Answer</span><span>Cannot be determined</span></strong>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="demo-caption">
+            The identities and values change, but the executable constraints and question structure do not. Variant
+            answers are recomputed; invariant and refusal answers remain fixed.
+          </p>
+
+          <dl class="key-stats" aria-label="Main findings at a glance">
+            <div>
+              <dt>9 / 9</dt>
+              <dd>models became less accurate when familiar names and values were replaced</dd>
+            </div>
+            <div>
+              <dt>6.5–8.1<small> pp</small></dt>
+              <dd>drop in overall reasoning accuracy across the nine models</dd>
+            </div>
+            <div>
+              <dt>15.7<small> pp</small></dt>
+              <dd>largest accuracy drop, on questions that require inference</dd>
+            </div>
+            <div>
+              <dt>1.0–3.2<small>%</small></dt>
+              <dd>of failures simply repeated the answer from the original real-world version</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      <section class="results-section section-rule" id="results" aria-labelledby="results-title">
+        <div class="page-shell">
+          <div class="section-intro results-intro">
+            <div>
+              <p class="section-label">Table 2, unfolded</p>
+              <h2 id="results-title">The task stays fixed.<br />Accuracy does not.</h2>
+            </div>
+            <p>
+              Every evaluated model is significantly worse on variant-answer reasoning when familiar entities are
+              replaced by coherent fictitious counterparts.
+            </p>
+          </div>
+
+          <figure class="forest-figure" aria-labelledby="forest-title forest-caption">
+            <div class="forest-heading">
+              <div>
+                <p class="figure-kicker">Main effect · Variant reasoning</p>
+                <h3 id="forest-title">Fictitious minus factual accuracy</h3>
+                <p class="forest-deck">Negative values mean lower reasoning accuracy after entity replacement.</p>
+              </div>
+              <div class="forest-legend" aria-label="Figure legend">
+                <span><i class="legend-density"></i> Bootstrap density</span>
+                <span><i class="legend-interval"></i> 95% CI</span>
+                <span><i class="legend-mean"></i> Mean</span>
+              </div>
+            </div>
+
+            <div class="forest-scroll" tabindex="0" role="region" aria-label="Table 2 reasoning effects by model">
+              <div class="forest-mobile-axis" aria-hidden="true">
+                <span>Accuracy change (percentage points)</span>
+                <span class="ridge-axis"><i style="--axis-position: 0%">−14</i><i style="--axis-position: 14.29%">−12</i><i style="--axis-position: 28.57%">−10</i><i style="--axis-position: 42.86%">−8</i><i style="--axis-position: 57.14%">−6</i><i style="--axis-position: 71.43%">−4</i><i style="--axis-position: 85.71%">−2</i><i style="--axis-position: 100%">0 pp</i></span>
+              </div>
+              <table class="forest-table">
+                <caption>Smoothed paired document-bootstrap distributions of variant-answer reasoning performance change.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">
+                      <span class="forest-axis-title">Accuracy change (percentage points)</span>
+                      <span class="ridge-axis" aria-hidden="true"><i style="--axis-position: 0%">−14</i><i style="--axis-position: 14.29%">−12</i><i style="--axis-position: 28.57%">−10</i><i style="--axis-position: 42.86%">−8</i><i style="--axis-position: 57.14%">−6</i><i style="--axis-position: 71.43%">−4</i><i style="--axis-position: 85.71%">−2</i><i style="--axis-position: 100%">0 pp</i></span>
+                    </th>
+                    <th scope="col">95% CI</th>
+                    <th scope="col">Mean Δ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">OLMo-3 7B-Think</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="olmo-3-7b-think" role="img" aria-label="OLMo-3 7B-Think bootstrap distribution: mean minus 8.1 percentage points; 95% confidence interval minus 12.4 to minus 3.8."><span class="ridge-fallback" style="--lo: 11.43%; --hi: 72.86%; --est: 42.14%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−12.4, −3.8]</small></td>
+                    <td class="forest-change"><strong>−8.1 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">OLMo-3 7B-Instruct</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="olmo-3-7b-instruct" role="img" aria-label="OLMo-3 7B-Instruct bootstrap distribution: mean minus 7.8 percentage points; 95% confidence interval minus 12.6 to minus 2.9."><span class="ridge-fallback" style="--lo: 10%; --hi: 79.29%; --est: 44.29%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−12.6, −2.9]</small></td>
+                    <td class="forest-change"><strong>−7.8 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GPT-OSS 20B</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="gpt-oss-20b-groq" role="img" aria-label="GPT-OSS 20B bootstrap distribution: mean minus 7.0 percentage points; 95% confidence interval minus 10.2 to minus 3.8."><span class="ridge-fallback" style="--lo: 27.14%; --hi: 72.86%; --est: 50%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−10.2, −3.8]</small></td>
+                    <td class="forest-change"><strong>−7.0 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Gemma-4 26B-A4B-it</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="gemma-4-26b-a4b-it" role="img" aria-label="Gemma-4 26B-A4B-it bootstrap distribution: mean minus 6.5 percentage points; 95% confidence interval minus 10.2 to minus 2.9."><span class="ridge-fallback" style="--lo: 27.14%; --hi: 79.29%; --est: 53.57%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−10.2, −2.9]</small></td>
+                    <td class="forest-change"><strong>−6.5 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GPT-OSS 120B</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="gpt-oss-120b-groq" role="img" aria-label="GPT-OSS 120B bootstrap distribution: mean minus 8.0 percentage points; 95% confidence interval minus 11.3 to minus 4.7."><span class="ridge-fallback" style="--lo: 19.29%; --hi: 66.43%; --est: 42.86%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−11.3, −4.7]</small></td>
+                    <td class="forest-change"><strong>−8.0 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Qwen3.5 27B</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="qwen3.5-27b" role="img" aria-label="Qwen3.5 27B bootstrap distribution: mean minus 6.6 percentage points; 95% confidence interval minus 10.1 to minus 3.1."><span class="ridge-fallback" style="--lo: 27.86%; --hi: 77.86%; --est: 52.86%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−10.1, −3.1]</small></td>
+                    <td class="forest-change"><strong>−6.6 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Qwen3.5 35B-A3B</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="qwen3.5-35b-a3b" role="img" aria-label="Qwen3.5 35B-A3B bootstrap distribution: mean minus 6.5 percentage points; 95% confidence interval minus 9.9 to minus 3.2."><span class="ridge-fallback" style="--lo: 29.29%; --hi: 77.14%; --est: 53.57%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−9.9, −3.2]</small></td>
+                    <td class="forest-change"><strong>−6.5 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Llama-3.1 8B-Instruct</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="llama-3.1-8b-instruct" role="img" aria-label="Llama-3.1 8B-Instruct bootstrap distribution: mean minus 6.6 percentage points; 95% confidence interval minus 10.4 to minus 2.8."><span class="ridge-fallback" style="--lo: 25.71%; --hi: 80%; --est: 52.86%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−10.4, −2.8]</small></td>
+                    <td class="forest-change"><strong>−6.6 <small>pp</small></strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Claude Sonnet 4.6</th>
+                    <td class="ridge-cell"><div class="ridge-chart" data-ridge-model="claude-sonnet-4-6" role="img" aria-label="Claude Sonnet 4.6 bootstrap distribution: mean minus 7.8 percentage points; 95% confidence interval minus 10.8 to minus 5.0."><span class="ridge-fallback" style="--lo: 22.86%; --hi: 64.29%; --est: 44.29%" aria-hidden="true"><i></i><b></b></span></div></td>
+                    <td class="forest-ci"><small>[−10.8, −5.0]</small></td>
+                    <td class="forest-change"><strong>−7.8 <small>pp</small></strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <figcaption id="forest-caption">
+              <strong>All 9 models decline, and every 95% confidence interval excludes zero.</strong>
+              Curves are Gaussian KDEs of 100,000 paired document-bootstrap draws per model (shared 0.35 pp bandwidth
+              and density scale); bars mark the 95% intervals and dots the observed means. 100 documents · 300 paired
+              factual reasoning questions · 3,000 fictitious instances.
+            </figcaption>
+          </figure>
+
+          <figure class="table2-latex" aria-labelledby="table2-latex-caption">
+            <figcaption id="table2-latex-caption" class="table2-latex-caption">
+              <strong>Table 2:</strong> Mean performance change (fictional minus factual, percentage points) by answer
+              and question type. Brackets are 95% CIs; significant cells are framed and bold. <em>Reason.</em>
+              aggregates arithmetic, temporal, and inference questions. Purple and blue denote decreases and increases,
+              respectively.
+            </figcaption>
+            <div
+              class="table2-latex-scroll"
+              tabindex="0"
+              role="region"
+              aria-label="Table 2 results. Scroll horizontally to inspect every value."
+            >
+              <a
+                href="assets/memoreason/table2-latex.webp"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open Table 2 at full size"
+              >
+                <img
+                  src="assets/memoreason/table2-latex.webp"
+                  width="3417"
+                  height="1495"
+                  loading="lazy"
+                  decoding="async"
+                  alt=""
+                />
+              </a>
+            </div>
+          </figure>
+
+          <aside class="shortcut-callout" aria-label="Strong parametric shortcut finding">
+            <div>
+              <span>Not simple answer recall</span>
+              <strong>1.0–3.2%</strong>
+            </div>
+            <p>
+              Among failed fictitious reasoning examples, direct reproduction of the factual answer is rare. Familiarity
+              changes reasoning, but usually through something subtler than copying a memorized response.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="statistics-section section-rule" id="statistics" aria-labelledby="statistics-title">
+        <div class="page-shell">
+          <div class="section-intro">
+            <div>
+              <p class="section-label">Dataset statistics</p>
+              <h2 id="statistics-title">MemoReason at a glance.</h2>
+            </div>
+            <p>
+              One balanced, human-curated benchmark: 100 source templates spanning nine themes, fourteen entity types,
+              and a fixed question–answer contract.
+            </p>
+          </div>
+
+          <figure class="stats-figure" aria-labelledby="statistics-title stats-caption">
+            <div class="stats-plate">
+              <article class="stats-panel scale-panel">
+                <h3><span>a)</span> Controlled scale</h3>
+                <div class="scale-flow" aria-label="100 sources generate 1,200 factual tasks and 12,000 fictitious instances">
+                  <div><strong>100</strong><span>source<br />documents</span></div>
+                  <i aria-hidden="true">→</i>
+                  <div><strong>1,200</strong><span>factual<br />QA templates</span></div>
+                  <i aria-hidden="true">→</i>
+                  <div><strong>12,000</strong><span>fictitious<br />instances</span></div>
+                </div>
+                <p>Each source supports 12 question templates and 10 paired fictitious worlds.</p>
+              </article>
+
+              <article class="stats-panel themes-panel">
+                <h3><span>b)</span> Source themes</h3>
+                <div class="themes-layout">
+                  <div
+                    class="theme-donut"
+                    role="img"
+                    aria-label="One hundred documents: 12 award winners, 10 biographies, 10 places, 12 companies, 12 natural disasters, 10 public attacks, 11 retail banking, 12 space missions, and 11 sport events"
+                  >
+                    <span><strong>9</strong> themes</span>
+                  </div>
+                  <ul class="theme-legend" aria-label="Documents per theme">
+                    <li><i class="theme-awards"></i><span>Award winners</span><strong>12</strong></li>
+                    <li><i class="theme-bios"></i><span>Biographies</span><strong>10</strong></li>
+                    <li><i class="theme-places"></i><span>Places</span><strong>10</strong></li>
+                    <li><i class="theme-companies"></i><span>Companies</span><strong>12</strong></li>
+                    <li><i class="theme-disasters"></i><span>Natural disasters</span><strong>12</strong></li>
+                    <li><i class="theme-attacks"></i><span>Public attacks</span><strong>10</strong></li>
+                    <li><i class="theme-banking"></i><span>Retail banking</span><strong>11</strong></li>
+                    <li><i class="theme-space"></i><span>Space missions</span><strong>12</strong></li>
+                    <li><i class="theme-sport"></i><span>Sport events</span><strong>11</strong></li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="stats-panel density-panel">
+                <div class="panel-heading-row">
+                  <h3><span>c)</span> Annotation density</h3>
+                  <div class="density-legend" aria-label="Bar colors">
+                    <span><i></i> Entities</span><span><i></i> Rules</span>
+                  </div>
+                </div>
+                <div class="density-chart" aria-label="Average annotated entities and rules per source document, by theme">
+                  <div><span>Awards</span><i><b style="--bar: 96.7%"></b><b style="--bar: 95.3%"></b></i><small>58.0 · 57.2</small></div>
+                  <div><span>Biographies</span><i><b style="--bar: 85.7%"></b><b style="--bar: 59.2%"></b></i><small>51.4 · 35.5</small></div>
+                  <div><span>Places</span><i><b style="--bar: 81.2%"></b><b style="--bar: 52.3%"></b></i><small>48.7 · 31.4</small></div>
+                  <div><span>Companies</span><i><b style="--bar: 69%"></b><b style="--bar: 36.2%"></b></i><small>41.4 · 21.7</small></div>
+                  <div><span>Disasters</span><i><b style="--bar: 66.3%"></b><b style="--bar: 64.2%"></b></i><small>39.8 · 38.5</small></div>
+                  <div><span>Attacks</span><i><b style="--bar: 37.2%"></b><b style="--bar: 29%"></b></i><small>22.3 · 17.4</small></div>
+                  <div><span>Banking</span><i><b style="--bar: 23.8%"></b><b style="--bar: 14%"></b></i><small>14.3 · 8.4</small></div>
+                  <div><span>Space</span><i><b style="--bar: 43.7%"></b><b style="--bar: 39.2%"></b></i><small>26.2 · 23.5</small></div>
+                  <div><span>Sport</span><i><b style="--bar: 65.7%"></b><b style="--bar: 74.8%"></b></i><small>39.4 · 44.9</small></div>
+                </div>
+                <p><strong>38.0</strong> entities and <strong>31.2</strong> rules per document on average.</p>
+              </article>
+
+              <article class="stats-panel matrix-panel">
+                <h3><span>d)</span> Question–answer design</h3>
+                <div class="qa-grid" role="table" aria-label="Four question classes crossed with three answer classes">
+                  <div class="qa-corner" role="columnheader"><span>4 × 3</span></div>
+                  <div role="columnheader">Variant</div>
+                  <div role="columnheader">Invariant</div>
+                  <div role="columnheader">Refusal</div>
+                  <div role="rowheader">Extractive</div><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i>
+                  <div role="rowheader">Arithmetic</div><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i>
+                  <div role="rowheader">Temporal</div><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i>
+                  <div role="rowheader">Inference</div><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i><i role="cell" aria-label="Included"></i>
+                </div>
+                <p>Every source contains all 12 combinations: four reasoning classes crossed with three answer behaviors.</p>
+              </article>
+            </div>
+            <figcaption id="stats-caption">
+              Figure 2 · Benchmark composition. Document counts and annotation densities are computed over the final
+              human-reviewed set; bars show theme-level means.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+
+      <section class="findings-section section-rule" id="findings" aria-labelledby="findings-title">
+        <div class="page-shell">
+          <div class="section-intro findings-intro">
+            <div>
+              <p class="section-label">Beyond the endpoints</p>
+              <h2 id="findings-title">Mixed worlds are often hardest.</h2>
+            </div>
+            <p>
+              Accuracy often bottoms out before every entity is replaced, suggesting that familiar cues can conflict
+              with counterfactual relations inside the same context.
+            </p>
+          </div>
+
+          <dl class="finding-stats">
+            <div><dt>91.75<small>%</small></dt><dd>Qwen3.5-27B factual endpoint</dd></div>
+            <div><dt>88.09<small>%</small></dt><dd>minimum accuracy at 80% replacement</dd></div>
+            <div><dt>88.80<small>%</small></dt><dd>fully fictitious endpoint</dd></div>
+            <div><dt>6 / 7</dt><dd>models recover after an intermediate minimum</dd></div>
+          </dl>
+
+          <figure class="curves-figure">
+            <div class="curves-heading">
+              <div>
+                <h3><span>Figure 3</span> Accuracy along the replacement path.</h3>
+                <p>
+                  All seven curves fall below their factual baseline by 50% replacement; six recover after minima
+                  between 50% and 80%.
+                </p>
+              </div>
+              <button type="button" data-dialog-open="curves-dialog">
+                Expand <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+            <img
+              src="assets/memoreason/replacement-curves.png"
+              alt="Seven model accuracy curves across entity replacement proportions from zero to one hundred percent"
+              width="1564"
+              height="876"
+              loading="lazy"
+            />
+            <figcaption>
+              Accuracy across partial entity replacement. Bands show 95% document-cluster bootstrap intervals; dashed
+              lines mark factual baselines. Overlapping intervals do not establish a causal mechanism by themselves.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="method-section section-rule" id="method" aria-labelledby="method-title">
+        <div class="page-shell">
+          <div class="section-intro">
+            <div>
+              <p class="section-label">Method</p>
+              <h2 id="method-title">One source. Ten controlled worlds.</h2>
+            </div>
+            <p>
+              Human annotations identify replaceable entities, encode consistency constraints, and define questions
+              whose logical structure stays fixed across factual and fictitious settings.
+            </p>
+          </div>
+
+          <ol class="method-flow" aria-label="MemoReason construction pipeline">
+            <li><span>01</span><strong>Source</strong><small>Select an entity-rich document</small></li>
+            <li><span>02</span><strong>Annotate</strong><small>Mark typed entities</small></li>
+            <li><span>03</span><strong>Constrain</strong><small>Encode semantic rules</small></li>
+            <li><span>04</span><strong>Replace</strong><small>Generate coherent worlds</small></li>
+            <li><span>05</span><strong>Evaluate</strong><small>Ask paired questions</small></li>
+          </ol>
+
+          <figure class="annotation-figure">
+            <img
+              src="assets/memoreason/annotation-interface.png"
+              alt="MemoReason annotation interface showing a source document, entity annotations, rules, and questions"
+              width="3014"
+              height="1476"
+              loading="lazy"
+            />
+            <figcaption>
+              Figure 4 · The annotation interface keeps source text, typed entities, executable constraints, and the 12-question
+              contract visible in one review surface.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="paper-section" id="paper" aria-labelledby="paper-title">
+        <div class="page-shell">
+          <div class="paper-grid">
+            <article>
+              <p class="section-label">Abstract</p>
+              <h2 id="paper-title">Memory changes more than recall.</h2>
+              <p>
+                MemoReason pairs factual reasoning tasks with structurally identical fictitious versions in which real
+                entities are replaced by same-type counterparts under explicit constraints. Across recent LLMs,
+                contextual reasoning is consistently weaker in the fictitious condition. Yet models seldom answer with
+                the memorized factual response, suggesting a memory influence more complex than direct factual recall.
+              </p>
+            </article>
+
+            <div class="evidence-scope">
+              <article>
+                <h3>Evidence checks</h3>
+                <ul>
+                  <li>Document-cluster bootstrap inference</li>
+                  <li>200 / 200 observed judge agreement</li>
+                  <li>Temperature robustness on two models</li>
+                  <li>Weak frequency correlation</li>
+                  <li>Reasoning effort does not remove the gap</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+
+          <div class="bibtex-panel">
+            <div>
+              <p class="section-label">Citation</p>
+              <h3>BibTeX</h3>
+            </div>
+            <pre id="bibtex"><code>@misc{tighidet2026memoreason,
+  title  = {MemoReason: Evaluating the Effect of
+            Parametric Memory on Contextual Reasoning in LLMs},
+  author = {Tighidet, Zineddine and Mogini, Andrea and
+            Mei, Jiali and Gallinari, Patrick and
+            Piwowarski, Benjamin},
+  year   = {2026}
+}</code></pre>
+            <button type="button" data-copy-target="bibtex">Copy BibTeX</button>
+            <span class="copy-status" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell">
+        <a class="wordmark" href="#top">MemoReason</a>
+        <p>Same reasoning. Different familiarity.</p>
+        <p>
+          © <span data-current-year>2026</span> MemoReason authors · Brain:
+          <a href="https://github.com/twitter/twemoji" target="_blank" rel="noopener noreferrer">Twemoji</a>
+        </p>
+      </div>
+    </footer>
+
+    <dialog class="figure-dialog" id="curves-dialog" aria-labelledby="curves-dialog-title">
+      <div class="dialog-heading">
+        <div>
+          <p class="section-label">Partial replacement experiment</p>
+          <h2 id="curves-dialog-title">Accuracy by replacement proportion</h2>
+        </div>
+        <form method="dialog"><button type="submit" aria-label="Close expanded figure">×</button></form>
+      </div>
+      <img
+        src="assets/memoreason/replacement-curves.png"
+        alt="Seven model accuracy curves across entity replacement proportions from zero to one hundred percent"
+        width="1564"
+        height="876"
+      />
+      <p>Shaded bands are 95% document-cluster bootstrap intervals.</p>
+    </dialog>
+
+    <script src="assets/memoreason/variant-reasoning-ridges.js" defer></script>
+    <script src="assets/memoreason/project.js" defer></script>
+    <script src="assets/memoreason/minimal.js" defer></script>
+  </body>
+</html>
