@@ -464,9 +464,9 @@ select {
 
 .leaderboard-table {
   width: 100%;
-  min-width: 1100px;
+  min-width: 1180px;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 16px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -481,7 +481,7 @@ select {
 
 .leaderboard-table th,
 .leaderboard-table td {
-  padding: 17px 16px;
+  padding: 19px 18px;
   border-bottom: 1px solid var(--line);
   text-align: right;
   white-space: nowrap;
@@ -490,7 +490,7 @@ select {
 .leaderboard-table thead th {
   color: var(--muted);
   background: #fafafa;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.035em;
   text-transform: uppercase;
@@ -506,7 +506,7 @@ select {
 .leaderboard-table tbody th {
   min-width: 245px;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 650;
 }
 
@@ -554,7 +554,7 @@ select {
 .rank-cell {
   width: 72px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .leaderboard-note {
