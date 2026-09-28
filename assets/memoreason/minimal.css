@@ -398,6 +398,16 @@ select {
   font-weight: 600;
 }
 
+.podium-model > span,
+.model-label > span {
+  order: 1;
+}
+
+.podium-model > .model-logo,
+.model-label > .model-logo {
+  order: 2;
+}
+
 .model-logo {
   display: block;
   width: 18px;
