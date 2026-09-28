@@ -390,9 +390,22 @@ select {
 }
 
 .podium-model {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
   font-family: var(--serif);
   font-size: 18px;
   font-weight: 600;
+}
+
+.model-logo {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border: 1px solid rgba(31, 29, 25, 0.1);
+  border-radius: 7px;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(31, 29, 25, 0.08);
 }
 
 .score-track {
@@ -477,6 +490,19 @@ select {
   color: var(--ink);
   font-size: 13px;
   font-weight: 650;
+}
+
+.model-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.leaderboard-table .model-logo {
+  width: 23px;
+  height: 23px;
+  flex-basis: 23px;
+  border-radius: 6px;
 }
 
 .leaderboard-table tbody tr:last-child th,
