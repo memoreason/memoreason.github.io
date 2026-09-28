@@ -392,18 +392,21 @@ select {
 .podium-model {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 8px;
   font-family: var(--serif);
   font-size: 18px;
   font-weight: 600;
 }
 
 .model-logo {
-  width: 28px;
-  height: 28px;
-  flex: 0 0 28px;
+  display: block;
+  width: 18px;
+  max-width: 18px;
+  height: 18px;
+  max-height: 18px;
+  flex: 0 0 18px;
   border: 1px solid rgba(31, 29, 25, 0.1);
-  border-radius: 7px;
+  border-radius: 5px;
   object-fit: cover;
   box-shadow: 0 1px 3px rgba(31, 29, 25, 0.08);
 }
@@ -495,14 +498,16 @@ select {
 .model-label {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 7px;
 }
 
-.leaderboard-table .model-logo {
-  width: 23px;
-  height: 23px;
-  flex-basis: 23px;
-  border-radius: 6px;
+.leaderboard-table .model-label > .model-logo {
+  width: 16px;
+  max-width: 16px;
+  height: 16px;
+  max-height: 16px;
+  flex-basis: 16px;
+  border-radius: 4px;
 }
 
 .leaderboard-table tbody tr:last-child th,
